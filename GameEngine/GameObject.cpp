@@ -49,3 +49,4 @@ void GameObject::Render()
                    &texRect,
                    &objRect);
 }
+
