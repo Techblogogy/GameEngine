@@ -1,6 +1,6 @@
 //
 //  Camera.cpp
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/19/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.

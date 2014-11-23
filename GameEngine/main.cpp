@@ -1,9 +1,6 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-//#include "Game.h"
-//#include "Scene.h"
-
 #include "GameManager.h"
 
 void InitGame()

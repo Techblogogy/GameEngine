@@ -1,13 +1,13 @@
 //
 //  Camera.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/19/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__Camera__
-#define __tst__Camera__
+#ifndef __GameEngine__Camera__
+#define __GameEngine__Camera__
 
 #include <SDL2/SDL.h>
 #include "Vector2.h"
@@ -35,4 +35,4 @@ private:
     SDL_Rect bounds; //Camera Dimension
 };
 
-#endif /* defined(__tst__Camera__) */
+#endif /* defined(__GameEngine__Camera__) */

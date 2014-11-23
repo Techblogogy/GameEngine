@@ -1,13 +1,13 @@
 //
 //  TextureManager.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/19/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__TextureManager__
-#define __tst__TextureManager__
+#ifndef __GameEngine__TextureManager__
+#define __GameEngine__TextureManager__
 
 //#include "GameManager.h"
 
@@ -38,4 +38,4 @@ private:
     //SDL_Renderer* rend; //SDL Game renderer
 };
 
-#endif /* defined(__tst__TextureManager__) */
+#endif /* defined(__GameEngine__TextureManager__) */

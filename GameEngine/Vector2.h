@@ -1,13 +1,13 @@
 //
 //  Vector2.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/19/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__Vector2__
-#define __tst__Vector2__
+#ifndef __GameEngine__Vector2__
+#define __GameEngine__Vector2__
 
 #include <math.h>
 
@@ -30,4 +30,4 @@ private:
     //int w,h;
 };
 
-#endif /* defined(__tst__Vector2__) */
+#endif /* defined(__GameEngine__Vector2__) */

@@ -1,13 +1,13 @@
 //
 //  Scene.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/18/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__Scene__
-#define __tst__Scene__
+#ifndef __GameEngine__Scene__
+#define __GameEngine__Scene__
 
 #include "GameObject.h"
 
@@ -29,4 +29,4 @@ public:
     
 };
 
-#endif /* defined(__tst__Scene__) */
+#endif /* defined(__GameEngine__Scene__) */

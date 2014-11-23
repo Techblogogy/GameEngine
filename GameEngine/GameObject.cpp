@@ -1,6 +1,6 @@
 //
 //  GameObject.cpp
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/17/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
@@ -11,7 +11,6 @@
 
 GameObject::GameObject(std::string tId)
 {
-    //gRenderer = gRender;
     textureId = tId;
     
     texRect = TextureManager::Instance()->GetTextureBounds(textureId);
@@ -42,8 +41,6 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-    //texRect.x += Camera::Instance()->GetX();
-    
     objRect.x = position->getX() - Camera::Instance()->GetX();
     objRect.y = position->getY() - Camera::Instance()->GetY();
     

@@ -1,6 +1,6 @@
 //
 //  Scene.cpp
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/18/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.

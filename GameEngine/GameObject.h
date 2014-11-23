@@ -1,13 +1,13 @@
 //
 //  GameObject.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/17/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__GameObject__
-#define __tst__GameObject__
+#ifndef __GameEngine__GameObject__
+#define __GameEngine__GameObject__
 
 //#include <SDL2/SDL.h> //Include SDL2
 #include <string> //Inlcude STD String
@@ -28,7 +28,7 @@ public:
     virtual void Render(); //GameObject Render
     virtual void Update(); //GameObject Update
     
-    Vector2* position;
+    Vector2* position; //Stores GameObjects Position
     
     int GetW() { return objRect.w; }; //Get Gameobjects Width
     int GetH() { return objRect.h; }; //Get GameObject Height
@@ -41,4 +41,4 @@ private:
     SDL_Rect objRect; //Stores Game Object X Y Width And Height
 };
 
-#endif /* defined(__tst__GameObject__) */
+#endif /* defined(__GameEngine__GameObject__) */

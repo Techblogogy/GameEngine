@@ -1,6 +1,6 @@
 //
 //  TextureManager.cpp
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/19/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
@@ -26,10 +26,14 @@ TextureManager::TextureManager()
 
 void TextureManager::LoadTexture(std::string path, std::string name)
 {
+    printf("Loading Image. Id: %s, Path: %s \n", name.c_str(), path.c_str());
+    
     SDL_Texture* tex;
     
     tempSurface = IMG_Load(path.c_str());
     tex = SDL_CreateTextureFromSurface(GameManager::Instance()->rend , tempSurface);
+    
+    if (tex == NULL) printf("Image Loading Failed.");
     
     SDL_FreeSurface(tempSurface);
     

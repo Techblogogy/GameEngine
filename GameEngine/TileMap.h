@@ -1,26 +1,28 @@
 //
 //  TileMap.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/20/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__TileMap__
-#define __tst__TileMap__
+#ifndef __GameEngine__TileMap__
+#define __GameEngine__TileMap__
 
 #include <SDL2/SDL.h>
+#include <CoreFoundation/CFBundle.h>
 
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
 
+#include <stdio.h>
+
 #include "json/json.h"
 
 #include "TextureManager.h"
 #include "Camera.h"
-//#include "GameManager.h"
 
 struct Tile
 {
@@ -40,8 +42,6 @@ public:
     void RenderStatic(); //Render Static Layers
     void RenderDynamic(); //Render Dynamic Layers
 private:
-    //SDL_Renderer* rend; //SDL_Renderer
-    
     std::string tiledPath; //Tile Map Path
     
     Json::Value jMap; //JSON Tiled File
@@ -59,4 +59,4 @@ private:
     int height; //TileMap height in tiles
 };
 
-#endif /* defined(__tst__TileMap__) */
+#endif /* defined(__GameEngine__TileMap__) */

@@ -1,13 +1,13 @@
 //
 //  GameManager.h
-//  tst
+//  GameEngine
 //
 //  Created by Fedor Bobylev on 11/23/14.
 //  Copyright (c) 2014 Fedor Bobylev. All rights reserved.
 //
 
-#ifndef __tst__GameManager__
-#define __tst__GameManager__
+#ifndef __GameEngine__GameManager__
+#define __GameEngine__GameManager__
 
 #include <SDL2/SDL.h> //Main SDL Header
 #include <stdio.h> //STD IO Library
@@ -50,4 +50,4 @@ private:
     void Render(); //Render Game
 };
 
-#endif /* defined(__tst__GameManager__) */
+#endif /* defined(__GameEngine__GameManager__) */
