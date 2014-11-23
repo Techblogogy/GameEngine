@@ -59,3 +59,17 @@ SDL_Rect TextureManager::GetTextureBounds(std::string name)
 void TextureManager::RenderTexture(std::string name)
 {
 }
+
+void TextureManager::CleanUp()
+{
+    printf("Cleaning Texture Manager");
+    
+    std::map<std::string, SDL_Texture*>::iterator it;
+    for (it = textureMap.begin(); it!=textureMap.end(); it++)
+    {
+        SDL_DestroyTexture(it->second);
+    }
+    textureMap.clear();
+    
+    delete g_instance;
+}

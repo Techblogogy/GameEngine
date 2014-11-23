@@ -26,6 +26,9 @@ Camera::Camera(int x, int y, int width, int height)
     
     bounds.w = width;
     bounds.h = height;
-    
-    
+}
+
+void Camera::CleanUp()
+{
+    delete g_instance;
 }

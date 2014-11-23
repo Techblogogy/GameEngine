@@ -27,6 +27,8 @@ GameManager::GameManager()
 /* Initialize GameManager */
 void GameManager::Init(std::string wName, int w, int h)
 {
+    SDL_Init(SDL_INIT_EVERYTHING);
+    
     CreateWindow(wName, w, h);
     CreateRenderer();
     
@@ -89,11 +91,7 @@ void GameManager::SetUpScene()
 {
     printf("Creating Scene \n");
     
-    gScene = new Scene();
-    
-    tMap = new TileMap("tileMap.json");
-    tMap->LoadMap();
-    tMap->LoadResources();
+    gScene = new Scene("tileMap.json");
     
     if (gScene == NULL)
     {
@@ -146,7 +144,6 @@ void GameManager::Render()
     
     SDL_RenderClear(rend);
     
-    tMap->RenderStatic();
     gScene->Render();
     
     SDL_RenderPresent(rend);
@@ -156,8 +153,15 @@ void GameManager::Render()
 
 void GameManager::Clean()
 {
+    TextureManager::Instance()->CleanUp();
+    Camera::Instance()->CleanUp();
+    
+    gScene->CleanUp();
+    
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(rend);
     
     SDL_Quit(); //Quit SDL
+    
+    delete g_instance;
 }

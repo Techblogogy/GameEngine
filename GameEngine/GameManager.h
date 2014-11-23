@@ -26,7 +26,6 @@ public:
     SDL_Renderer* rend; //SDL Game Renderer
     
     Scene* gScene; //Main Game Scene
-    TileMap* tMap; //Main Game Tile Map
     
     void Init(std::string wName, int w, int h); //Init Game Manager
     

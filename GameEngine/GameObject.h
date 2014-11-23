@@ -32,6 +32,8 @@ public:
     
     int GetW() { return objRect.w; }; //Get Gameobjects Width
     int GetH() { return objRect.h; }; //Get GameObject Height
+    
+    void CleanUp();
 private:
     //SDL_Renderer* gRenderer; //SDL Game Renderer
     

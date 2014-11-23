@@ -50,3 +50,7 @@ void GameObject::Render()
                    &objRect);
 }
 
+void GameObject::CleanUp()
+{
+    delete position;
+}

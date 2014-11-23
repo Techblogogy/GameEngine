@@ -1,0 +1,8 @@
+GameEngine To-Do List:
+
+-Sprite Sheet Animation
+-Basic Physics (Collision, Jumping, Gravity)
+-Sound Handling
+-Particle System
+-Better Garbage Collection
+-Input Handling

@@ -41,11 +41,15 @@ Json::Value ReadJSONFile(std::string path)
     bool loaded = jTxt.parse(fStr, jVal, false);
     if (!loaded) printf("Failed To Load Tiled Map File. Path: %s Reason: %s \n", cBuf, jTxt.getFormatedErrorMessages().c_str());
     
+    delete cBuf;
+    
     return jVal;
     
 #endif
     
 #ifdef _WIN32
+    /* Windows Only */
+    
     /* Read Tile Map File */
     Json::Value jVal;
     Json::Reader jTxt; //JSON File Parser
@@ -131,7 +135,7 @@ void TileMap::RenderStatic()
                 dRect.y = y*tileheight - Camera::Instance()->GetY();
                 
                 SDL_RenderCopy(GameManager::Instance()->rend,
-                               TextureManager::Instance(/*rend*/)->GetTexture(tiles[mapLayers[i][y*height+x]-1].id),
+                               TextureManager::Instance()->GetTexture(tiles[mapLayers[i][y*height+x]-1].id),
                                &sRect,
                                &dRect);
             }
@@ -142,4 +146,20 @@ void TileMap::RenderStatic()
 void TileMap::RenderDynamic()
 {
     
+}
+
+bool TileMap::isEmpty(int layerId, int x, int y)
+{
+    if (mapLayers[layerId][y*height+x] == 0) return true;
+    else return false;
+}
+
+void TileMap::CleanUp()
+{
+    for (std::vector<int*>::size_type i=0; i<mapLayers.size(); i++)
+    {
+        delete mapLayers[i];
+    }
+    mapLayers.clear();
+    tiles.clear();
 }

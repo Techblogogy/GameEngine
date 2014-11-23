@@ -15,7 +15,7 @@ class Vector2
 {
 public:
     Vector2(float xP, float yP); //2D Vector Constructor
-    ~Vector2(); //2D Vector Deconstructor
+    //~Vector2(); //2D Vector Deconstructor
     
     float getX(); //Get Current X Of Vector
     float getY(); //Get Current Y Of Vector

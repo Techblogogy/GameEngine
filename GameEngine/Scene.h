@@ -9,20 +9,25 @@
 #ifndef __GameEngine__Scene__
 #define __GameEngine__Scene__
 
-#include "GameObject.h"
-
 #include <vector>
+
+#include "GameObject.h"
+#include "TileMap.h"
 
 class Scene
 {
 public:
-    Scene(); //Scene's Constructor
+    Scene(std::string tMapPath); //Scene's Constructor
     ~Scene(); //Scene's Destructor
     
-    void Add(GameObject*& obj); //Add Object to scene
+    TileMap* tileMap; //Stores Tile Map
+    
+    void Add(GameObject* obj); //Add Object to scene
     
     void Render(); //Render All Objects to scenes
     void Update(); //Update All Objects on scene
+    
+    void CleanUp();
     
     std::vector<GameObject*> objects; //Scene Objects
 //private:

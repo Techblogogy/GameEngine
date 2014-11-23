@@ -13,7 +13,6 @@
 #include <CoreFoundation/CFBundle.h>
 
 #include <string>
-#include <iostream>
 #include <fstream>
 #include <vector>
 
@@ -41,6 +40,10 @@ public:
     
     void RenderStatic(); //Render Static Layers
     void RenderDynamic(); //Render Dynamic Layers
+    
+    bool isEmpty(int layerId, int x, int y);
+    
+    void CleanUp();
 private:
     std::string tiledPath; //Tile Map Path
     
@@ -49,8 +52,8 @@ private:
     SDL_Rect sRect; //Stores rendered texture coords
     SDL_Rect dRect; //Stores texture coords
     
-    std::vector<int*> mapLayers;
-    std::vector<Tile> tiles;
+    std::vector<int*> mapLayers; //Stores Layers Data
+    std::vector<Tile> tiles; //Stores Tilesets Positions
     
     int tilewidth; //Width of Tile In Pixels
     int tileheight; //Height of tile in pixels

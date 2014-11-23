@@ -27,7 +27,7 @@ public:
     SDL_Rect GetTextureBounds(std::string name); //Get Texture bounds
     void RenderTexture(std::string name); //Render Texture
     
-    //void CleanUp(); //Destroys SDL Textures
+    void CleanUp(); //Destroys SDL Textures
 private:
     TextureManager(/*SDL_Renderer* g_R*/); //Private texture constructor
     static TextureManager* g_instance; //Texture Manager Instance

@@ -24,6 +24,7 @@
 		F547F3B41A22219D00DDFD18 /* tileSet.png in Resources */ = {isa = PBXBuildFile; fileRef = F547F3B21A22219D00DDFD18 /* tileSet.png */; };
 		F547F3B71A2221A700DDFD18 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F547F3B51A2221A700DDFD18 /* Vector2.cpp */; };
 		F547F3BB1A22238000DDFD18 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F547F3BA1A22238000DDFD18 /* Info.plist */; };
+		F56306551A22759A0051FAA2 /* Plan.txt in Resources */ = {isa = PBXBuildFile; fileRef = F56306541A22759A0051FAA2 /* Plan.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		F547F3B51A2221A700DDFD18 /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2.cpp; sourceTree = "<group>"; };
 		F547F3B61A2221A700DDFD18 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
 		F547F3BA1A22238000DDFD18 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F56306541A22759A0051FAA2 /* Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Plan.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				F547F38F1A22203600DDFD18 /* Game */,
 				F547F3901A22204000DDFD18 /* Engine */,
 				F547F3661A221E7000DDFD18 /* Supporting Files */,
+				F56306541A22759A0051FAA2 /* Plan.txt */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56306551A22759A0051FAA2 /* Plan.txt in Resources */,
 				F547F3BB1A22238000DDFD18 /* Info.plist in Resources */,
 				F547F3B31A22219D00DDFD18 /* tileMap.json in Resources */,
 				F547F3B41A22219D00DDFD18 /* tileSet.png in Resources */,

@@ -28,6 +28,8 @@ public:
     
     void SetW(int w) {bounds.w = w;}; //Set Camera Width
     void SetH(int h) {bounds.h = h;}; //Set Camera Height
+    
+    void CleanUp();
 private:
     Camera(int x, int y, int width, int height); // Private Camera Constructor
     static Camera* g_instance; //Camera Instance
