@@ -157,6 +157,7 @@ void GameManager::Clean()
     Camera::Instance()->CleanUp();
     
     gScene->CleanUp();
+    delete gScene;
     
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(rend);

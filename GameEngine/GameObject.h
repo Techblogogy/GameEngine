@@ -28,7 +28,7 @@ public:
     virtual void Render(); //GameObject Render
     virtual void Update(); //GameObject Update
     
-    Vector2* position; //Stores GameObjects Position
+    Vector2 position = Vector2(0,0);; //Stores GameObjects Position
     
     int GetW() { return objRect.w; }; //Get Gameobjects Width
     int GetH() { return objRect.h; }; //Get GameObject Height

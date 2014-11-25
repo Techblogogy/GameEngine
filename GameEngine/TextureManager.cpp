@@ -56,8 +56,70 @@ SDL_Rect TextureManager::GetTextureBounds(std::string name)
     return bounds;
 }
 
-void TextureManager::RenderTexture(std::string name)
+void TextureManager::Render(std::string name, Vector2 position)
 {
+    SDL_Rect destR; //Stores Texture Draw Position
+    SDL_Rect bounds; //Stores Texture crop position
+    SDL_QueryTexture(textureMap[name], NULL, NULL, &bounds.w, &bounds.h); //Get Texture Width And Height
+    
+    bounds.x = 0;
+    bounds.y = 0;
+    
+    destR.x = position.getX() - Camera::Instance()->GetX();
+    destR.y = position.getY() - Camera::Instance()->GetY();
+    
+    destR.w = bounds.w;
+    destR.h = bounds.h;
+    
+    SDL_RenderCopy(GameManager::Instance()->rend, textureMap[name], &bounds, &destR);
+}
+
+void TextureManager::Render(std::string name, Vector2 position, int xTile, int yTile, int tileW, int tileH)
+{
+    SDL_Rect destR; //Stores Texture Draw Position
+    SDL_Rect bounds; //Stores Texture crop position
+    //SDL_QueryTexture(textureMap[name], NULL, NULL, &bounds.w, &bounds.h); //Get Texture Width And Height
+    
+    bounds.x = xTile * tileW;
+    bounds.y = yTile * tileH;
+    
+    destR.x = position.getX() - Camera::Instance()->GetX();
+    destR.y = position.getY() - Camera::Instance()->GetY();
+    
+    destR.w = bounds.w = tileW; //bounds.w;
+    destR.h = bounds.h = tileH; //bounds.h;
+    
+    SDL_RenderCopy(GameManager::Instance()->rend, textureMap[name], &bounds, &destR);
+}
+
+void TextureManager::Render(std::string name,
+                            Vector2 position,
+                            int xOffL, int width,
+                            //int yOffL, int yOffR,
+                            int yOff,
+                            int tileW, int tileH,
+                            int time)
+{
+    SDL_Rect destR; //Stores Texture Draw Position
+    SDL_Rect bounds; //Stores Texture crop position
+    //SDL_QueryTexture(textureMap[name], NULL, NULL, &bounds.w, &bounds.h); //Get Texture Width And Height
+    
+    //bounds.x = xTile * tileW;
+    
+    bounds.y = yOff * tileH;
+    bounds.x = ( (SDL_GetTicks()/time % (width) ) + xOffL ) * tileW;
+    
+   // bounds.x = SDL_GetTicks()/time % width;
+    
+    //printf("%d\n", (SDL_GetTicks() / time % (bounds.w/tileW))*tileW );
+    
+    destR.x = position.getX() - Camera::Instance()->GetX();
+    destR.y = position.getY() - Camera::Instance()->GetY();
+    
+    destR.w = bounds.w = tileW; //bounds.w;
+    destR.h = bounds.h = tileH; //bounds.h;
+    
+    SDL_RenderCopy(GameManager::Instance()->rend, textureMap[name], &bounds, &destR);
 }
 
 void TextureManager::CleanUp()

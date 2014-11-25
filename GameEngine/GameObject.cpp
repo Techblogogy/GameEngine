@@ -15,7 +15,7 @@ GameObject::GameObject(std::string tId)
     
     texRect = TextureManager::Instance()->GetTextureBounds(textureId);
     
-    position = new Vector2(0,0);
+    //position =
     
     objRect.w = texRect.w;
     objRect.h = texRect.h;
@@ -41,16 +41,21 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-    objRect.x = position->getX() - Camera::Instance()->GetX();
+    /*objRect.x = position->getX() - Camera::Instance()->GetX();
     objRect.y = position->getY() - Camera::Instance()->GetY();
     
     SDL_RenderCopy(GameManager::Instance()->rend,
                    TextureManager::Instance()->GetTexture(textureId),
                    &texRect,
-                   &objRect);
+                   &objRect);*/
+    
+    //TextureManager::Instance()->Render(textureId, position);
+    //TextureManager::Instance()->Render(textureId, position, 1, 0, 0, 0, 32, 32, 250);
+    
+    //TextureManager::Instance()->Render(textureId, position, 1, 2, 0, 32, 32, 1000);
 }
 
 void GameObject::CleanUp()
 {
-    delete position;
+    //delete position;
 }

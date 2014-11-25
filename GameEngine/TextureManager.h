@@ -17,6 +17,8 @@
 #include <string>
 #include <map>
 
+#include "Camera.h"
+
 class TextureManager
 {
 public:
@@ -25,7 +27,21 @@ public:
     void LoadTexture(std::string path, std::string name); //Load Texture From File
     SDL_Texture* GetTexture(std::string name); //Get Texture from file
     SDL_Rect GetTextureBounds(std::string name); //Get Texture bounds
-    void RenderTexture(std::string name); //Render Texture
+    
+    void Render(std::string name, Vector2 position); //Render Texture
+    
+    void Render(std::string name,
+                Vector2 position,
+                int xTile, int yTile,
+                int tileW, int tileH); //Render Texture From SpriteSheet
+    
+    void Render(std::string name,
+                Vector2 position,
+                int xOffL, int xOffR,
+                //int yOffL, int yOffR,
+                int yOff,
+                int tileW, int tileH,
+                int time);
     
     void CleanUp(); //Destroys SDL Textures
 private:
