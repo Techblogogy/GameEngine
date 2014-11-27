@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F51637721A271F9B00BE0515 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F51637701A271F9B00BE0515 /* Particle.cpp */; };
 		F547F3871A221EBC00DDFD18 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547F3861A221EBC00DDFD18 /* Cocoa.framework */; };
 		F547F3891A221ECA00DDFD18 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547F3881A221ECA00DDFD18 /* CoreFoundation.framework */; };
 		F547F38C1A221EE800DDFD18 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547F38A1A221EE800DDFD18 /* SDL2_image.framework */; };
@@ -25,10 +26,14 @@
 		F547F3B71A2221A700DDFD18 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F547F3B51A2221A700DDFD18 /* Vector2.cpp */; };
 		F547F3BB1A22238000DDFD18 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F547F3BA1A22238000DDFD18 /* Info.plist */; };
 		F56306551A22759A0051FAA2 /* Plan.txt in Resources */ = {isa = PBXBuildFile; fileRef = F56306541A22759A0051FAA2 /* Plan.txt */; };
+		F57A9BCE1A25C1130015F8A4 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F57A9BCC1A25C1130015F8A4 /* EventHandler.cpp */; };
+		F5C08D3F1A2622E4008EC115 /* t.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C08D3E1A2622E4008EC115 /* t.png */; };
 		F5EFA20F1A250D3900307D37 /* sp.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EFA20E1A250D3900307D37 /* sp.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F51637701A271F9B00BE0515 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		F51637711A271F9B00BE0515 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		F547F3631A221E7000DDFD18 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F547F3861A221EBC00DDFD18 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F547F3881A221ECA00DDFD18 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +62,10 @@
 		F547F3B61A2221A700DDFD18 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
 		F547F3BA1A22238000DDFD18 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F56306541A22759A0051FAA2 /* Plan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Plan.txt; sourceTree = "<group>"; };
+		F57A9BCC1A25C1130015F8A4 /* EventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventHandler.cpp; sourceTree = "<group>"; };
+		F57A9BCD1A25C1130015F8A4 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
+		F5C08D3D1A260B26008EC115 /* Tile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		F5C08D3E1A2622E4008EC115 /* t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t.png; sourceTree = "<group>"; };
 		F5EFA20E1A250D3900307D37 /* sp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,12 +156,15 @@
 			isa = PBXGroup;
 			children = (
 				F547F3951A2220C400DDFD18 /* Camera.h */,
+				F57A9BCD1A25C1130015F8A4 /* EventHandler.h */,
 				F547F39D1A22213300DDFD18 /* GameManager.h */,
 				F547F39F1A22213E00DDFD18 /* GameObject.h */,
 				F547F3A91A22216100DDFD18 /* Scene.h */,
 				F547F3AC1A22217100DDFD18 /* TextureManager.h */,
+				F5C08D3D1A260B26008EC115 /* Tile.h */,
 				F547F3AF1A22219000DDFD18 /* TileMap.h */,
 				F547F3B61A2221A700DDFD18 /* Vector2.h */,
+				F51637711A271F9B00BE0515 /* Particle.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -161,12 +173,14 @@
 			isa = PBXGroup;
 			children = (
 				F547F3931A2220B100DDFD18 /* Camera.cpp */,
+				F57A9BCC1A25C1130015F8A4 /* EventHandler.cpp */,
 				F547F39B1A22212700DDFD18 /* GameManager.cpp */,
 				F547F39E1A22213E00DDFD18 /* GameObject.cpp */,
 				F547F3A81A22216100DDFD18 /* Scene.cpp */,
 				F547F3AB1A22217100DDFD18 /* TextureManager.cpp */,
 				F547F3AE1A22219000DDFD18 /* TileMap.cpp */,
 				F547F3B51A2221A700DDFD18 /* Vector2.cpp */,
+				F51637701A271F9B00BE0515 /* Particle.cpp */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -174,6 +188,7 @@
 		F547F3961A2220FC00DDFD18 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F5C08D3E1A2622E4008EC115 /* t.png */,
 				F5EFA20E1A250D3900307D37 /* sp.png */,
 				F547F3991A22211D00DDFD18 /* coolArt.bmp */,
 				F547F3B21A22219D00DDFD18 /* tileSet.png */,
@@ -267,6 +282,7 @@
 				F547F3BB1A22238000DDFD18 /* Info.plist in Resources */,
 				F547F3B31A22219D00DDFD18 /* tileMap.json in Resources */,
 				F547F3B41A22219D00DDFD18 /* tileSet.png in Resources */,
+				F5C08D3F1A2622E4008EC115 /* t.png in Resources */,
 				F5EFA20F1A250D3900307D37 /* sp.png in Resources */,
 				F547F39A1A22211D00DDFD18 /* coolArt.bmp in Resources */,
 			);
@@ -280,10 +296,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F547F3B01A22219000DDFD18 /* TileMap.cpp in Sources */,
+				F51637721A271F9B00BE0515 /* Particle.cpp in Sources */,
 				F547F3AA1A22216100DDFD18 /* Scene.cpp in Sources */,
 				F547F3941A2220B100DDFD18 /* Camera.cpp in Sources */,
 				F547F3A51A22214B00DDFD18 /* jsoncpp.cpp in Sources */,
 				F547F39C1A22212700DDFD18 /* GameManager.cpp in Sources */,
+				F57A9BCE1A25C1130015F8A4 /* EventHandler.cpp in Sources */,
 				F547F3A71A22215500DDFD18 /* main.cpp in Sources */,
 				F547F3A01A22213E00DDFD18 /* GameObject.cpp in Sources */,
 				F547F3B71A2221A700DDFD18 /* Vector2.cpp in Sources */,

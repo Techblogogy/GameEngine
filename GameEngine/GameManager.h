@@ -13,9 +13,19 @@
 #include <stdio.h> //STD IO Library
 
 #include "TextureManager.h" //Game Texture Manager
+#include "EventHandler.h" //Game Event Manager
 #include "Camera.h" //Game Camera
 #include "Scene.h" //Game Scene
 #include "TileMap.h" //Game Tile Map
+
+#define FPS_MS 16
+
+struct Time
+{
+    Uint32 t = 0; //Current Time
+    Uint32 d = 0; //Delta Time
+    Uint32 l = 0; //Last Frame Time
+};
 
 class GameManager
 {
@@ -26,6 +36,8 @@ public:
     SDL_Renderer* rend; //SDL Game Renderer
     
     Scene* gScene; //Main Game Scene
+    
+    Time time;
     
     void Init(std::string wName, int w, int h); //Init Game Manager
     

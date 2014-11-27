@@ -9,38 +9,32 @@
 #ifndef __GameEngine__GameObject__
 #define __GameEngine__GameObject__
 
-//#include <SDL2/SDL.h> //Include SDL2
 #include <string> //Inlcude STD String
 #include <math.h>
 
-//#include "GameManager.h"
 #include "Vector2.h" //Include Vector 2d library
 #include "Camera.h" //Camera Class
 #include "TextureManager.h" //Include texture manager
+#include "Tile.h"
 
 class GameObject
 {
 public:
-    GameObject(std::string tId); //GameObjet Constructor
+    GameObject(std::string tId, int w, int h); //GameObjet Constructor
     ~GameObject(); //GameObject Destructor
+    
+    Vector2 position = Vector2(0,0); //Stores GameObject's Position
     
     virtual void Init(); //GameObject Initiation
     virtual void Render(); //GameObject Render
     virtual void Update(); //GameObject Update
     
-    Vector2 position = Vector2(0,0);; //Stores GameObjects Position
-    
-    int GetW() { return objRect.w; }; //Get Gameobjects Width
-    int GetH() { return objRect.h; }; //Get GameObject Height
-    
     void CleanUp();
 private:
-    //SDL_Renderer* gRenderer; //SDL Game Renderer
+    //std::string textureId; //Texture id
     
-    std::string textureId; //Texture id
-    
-    SDL_Rect texRect; //Stores Texture X Y Width And Height
-    SDL_Rect objRect; //Stores Game Object X Y Width And Height
+    Tile texture;
+    Animation animS;
 };
 
 #endif /* defined(__GameEngine__GameObject__) */

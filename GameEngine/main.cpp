@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 
 #include "GameManager.h"
+#include "Particle.h"
 
 void InitGame()
 {
@@ -15,13 +16,13 @@ void InitGame()
     
     GameManager::Instance()->Init("Game", 800, 450);
     
-    TextureManager::Instance()->LoadTexture("sp.png", "spSheet");
+    TextureManager::Instance()->LoadTexture("t.png", "spSheet");
     
-    GameObject* go = new GameObject("spSheet");
+    GameObject* go = new GameObject("spSheet",32,32);
     
     GameManager::Instance()->gScene->Add(go);
-    go->position.setX(544);
-    go->position.setY(32);
+    go->position.x = 0;
+    go->position.y = 0;
     
     GameManager::Instance()->Tick();
     GameManager::Instance()->Clean();

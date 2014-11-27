@@ -112,27 +112,35 @@ void GameManager::Tick()
 {
     while (running)
     {
+        time.t = SDL_GetTicks();
+        time.d = time.t - time.l;
+        /*if (time.d < FPS_MS)
+        {
+            SDL_Delay(FPS_MS - time.d);
+            
+            time.t = SDL_GetTicks();
+            time.d = time.t - time.l;
+        }*/
+        time.l = time.t;
+        
+        printf("%d\n", time.d);
+        
         Update();
         Render();
+        
+        /*fTime = SDL_GetTicks() - cTime;
+        if (fTime < D_TIME)
+        {
+            SDL_Delay(D_TIME - fTime);
+        }*/
     }
 }
 
 void GameManager::Update()
 {
-    /* Get SDL Event */
-    SDL_Event event;
-    if (SDL_PollEvent(&event))
-    {
-        switch(event.type)
-        {
-            case SDL_QUIT:
-                running = false;
-            break;
-                
-            default:
-            break;
-        }
-    }
+    EventHandler::Instance()->GetEvents(running);
+    
+    //printf("%d\n", EventHandler::Instance()->isKeyDown(SDL_SCANCODE_W));
     
     /* Main Logic */
     gScene->Update();

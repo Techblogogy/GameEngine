@@ -22,12 +22,8 @@
 
 #include "TextureManager.h"
 #include "Camera.h"
-
-struct Tile
-{
-    SDL_Rect b;
-    std::string id;
-};
+#include "Vector2.h"
+#include "Tile.h"
 
 class TileMap
 {
@@ -41,16 +37,18 @@ public:
     void RenderStatic(); //Render Static Layers
     void RenderDynamic(); //Render Dynamic Layers
     
-    bool isEmpty(int layerId, int x, int y);
+    bool isEmpty(int layerId, Vector2 &pos, Tile &t, float &v);
+    
+    bool isColL(int layerId, Vector2 &pos, Tile &t, float &v);
+    bool isColR(int layerId, Vector2 &pos, Tile &t, float &v);
+    bool isColT(int layerId, Vector2 &pos, Tile &t, float &v);
+    bool isColB(int layerId, Vector2 &pos, Tile &t, float &v);
     
     void CleanUp();
 private:
     std::string tiledPath; //Tile Map Path
     
     Json::Value jMap; //JSON Tiled File
-    
-    SDL_Rect sRect; //Stores rendered texture coords
-    SDL_Rect dRect; //Stores texture coords
     
     std::vector<int*> mapLayers; //Stores Layers Data
     std::vector<Tile> tiles; //Stores Tilesets Positions

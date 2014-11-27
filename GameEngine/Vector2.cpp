@@ -14,7 +14,7 @@ Vector2::Vector2(float xP, float yP)
     y = yP;
 }
 
-float Vector2::getX()
+/*float Vector2::getX()
 {
     return x;
 }
@@ -30,7 +30,7 @@ void Vector2::setX(float xP)
 void Vector2::setY(float yP)
 {
     y = yP;
-}
+}*/
 
 float Vector2::getLength()
 {

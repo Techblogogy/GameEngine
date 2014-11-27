@@ -75,8 +75,8 @@ void TileMap::LoadMap()
     width = jMap["width"].asInt(); //Defines Width Of Tilemap in tiles
     height = jMap["height"].asInt(); //Defines Width Of Tilemap in tiles
     
-    dRect.w = tilewidth; //Sets rendering rectange width to width of tile
-    dRect.h = tileheight; //Sets rendering rectange height to height of tile
+    //dRect.w = tilewidth; //Sets rendering rectange width to width of tile
+    //dRect.h = tileheight; //Sets rendering rectange height to height of tile
     
     const Json::Value jLayers = jMap["layers"]; //Get's all tile map layers
     for (int i=0; i<jLayers.size(); i++) //Loops thorught each tile map layer
@@ -101,17 +101,17 @@ void TileMap::LoadResources()
         TextureManager::Instance()->LoadTexture(tilesets[i]["image"].asString(),
                                                 tilesets[i]["name"].asString()); //Load tilesheet texture using bitmap
         
-        tRect.b.w = tilesets[i]["tilewidth"].asInt(); //Set tilesheet tile width in pixels
-        tRect.b.h = tilesets[i]["tileheight"].asInt(); //Set tilesheet tile height in pixels
+        tRect.w = tilesets[i]["tilewidth"].asInt(); //Set tilesheet tile width in pixels
+        tRect.h = tilesets[i]["tileheight"].asInt(); //Set tilesheet tile height in pixels
         
         tRect.id = tilesets[i]["name"].asString(); //Set tilesheet id
         
-        for (int y=0; y<tilesets[i]["imageheight"].asInt()/tRect.b.h; y++)
+        for (int y=0; y<tilesets[i]["imageheight"].asInt()/tRect.h; y++)
         {
-            for (int x=0; x<tilesets[i]["imagewidth"].asInt()/tRect.b.w; x++)
+            for (int x=0; x<tilesets[i]["imagewidth"].asInt()/tRect.w; x++)
             {
-                tRect.b.y = tRect.b.h * y;
-                tRect.b.x = tRect.b.w * x;
+                tRect.r = /*tRect.b.h */ y;
+                tRect.c = /*tRect.b.w */ x;
                 
                 tiles.push_back(tRect);
             }
@@ -129,15 +129,8 @@ void TileMap::RenderStatic()
             {
                 if (mapLayers[i][y*height+x] == 0) continue;
                 
-                sRect = tiles[mapLayers[i][y*height+x]-1].b;
-                
-                dRect.x = x*tilewidth - Camera::Instance()->GetX();
-                dRect.y = y*tileheight - Camera::Instance()->GetY();
-                
-                SDL_RenderCopy(GameManager::Instance()->rend,
-                               TextureManager::Instance()->GetTexture(tiles[mapLayers[i][y*height+x]-1].id),
-                               &sRect,
-                               &dRect);
+                TextureManager::Instance()->Render(tiles[mapLayers[i][y*height+x]-1], //Tile Struct
+                                                   Vector2(x*tilewidth, y*tileheight)); //Render Position
             }
         }
     }
@@ -148,10 +141,80 @@ void TileMap::RenderDynamic()
     
 }
 
-bool TileMap::isEmpty(int layerId, int x, int y)
+/*bool TileMap::isEmpty(int layerId, Vector2 &pos, Tile &t, float &v)
 {
+    //printf("%d\n", (int)pos.y*height+(int)pos.x);
+    
     if (mapLayers[layerId][y*height+x] == 0) return true;
     else return false;
+}*/
+
+bool TileMap::isColT(int layerId, Vector2 &pos, Tile &t, float &v)
+{
+    //Top Edge
+    Vector2 p1 = Vector2( (int)(pos.x)/tilewidth, (int)(pos.y-v)/tileheight );
+    Vector2 p2 = Vector2( (int)(pos.x+(float)t.w-1.0f)/tilewidth, (int)(pos.y-v)/tileheight );
+    
+    if (mapLayers[layerId][(int)p1.y*height+(int)p1.x] == 0 &&
+        mapLayers[layerId][(int)p2.y*height+(int)p2.x] == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool TileMap::isColB(int layerId, Vector2 &pos, Tile &t, float &v)
+{
+    //Bottom Edge
+    Vector2 p3 = Vector2( (int)(pos.x)/tilewidth, (int)(pos.y+(float)t.h)/tileheight );
+    Vector2 p4 = Vector2( (int)(pos.x+(float)t.w-1.0f)/tilewidth, (int)(pos.y+(float)t.h)/tileheight );
+    
+    if (mapLayers[layerId][(int)p3.y*height+(int)p3.x] == 0 &&
+        mapLayers[layerId][(int)p4.y*height+(int)p4.x] == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool TileMap::isColL(int layerId, Vector2 &pos, Tile &t, float &v)
+{
+    //Left Edge
+    Vector2 p5 = Vector2( (int)(pos.x-v)/tilewidth, (int)(pos.y)/tileheight );
+    Vector2 p6 = Vector2( (int)(pos.x-v)/tilewidth, (int)(pos.y+(float)t.h-1.0f)/tileheight );
+    
+    if (mapLayers[layerId][(int)p5.y*height+(int)p5.x] == 0 &&
+        mapLayers[layerId][(int)p6.y*height+(int)p6.x] == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool TileMap::isColR(int layerId, Vector2 &pos, Tile &t, float &v)
+{
+    //Right Edge
+    Vector2 p7 = Vector2( (int)(pos.x+(float)t.w)/tilewidth, (int)(pos.y)/tileheight );
+    Vector2 p8 = Vector2( (int)(pos.x+(float)t.w)/tilewidth, (int)(pos.y+(float)t.h-1.0f)/tileheight );
+    
+    if (mapLayers[layerId][(int)p7.y*height+(int)p7.x] == 0 &&
+        mapLayers[layerId][(int)p8.y*height+(int)p8.x] == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void TileMap::CleanUp()
