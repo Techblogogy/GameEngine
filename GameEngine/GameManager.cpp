@@ -25,7 +25,7 @@ GameManager::GameManager()
 }
 
 /* Initialize GameManager */
-void GameManager::Init(std::string wName, int w, int h)
+void GameManager::Init(std::string wName, int w, int h, std::string path)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     
@@ -33,7 +33,7 @@ void GameManager::Init(std::string wName, int w, int h)
     CreateRenderer();
     
     SetUpCamera(w, h);
-    SetUpScene();
+    SetUpScene(path);
     //SetUpTextureManager();
 }
 
@@ -87,11 +87,11 @@ void GameManager::SetUpCamera(int w, int h)
     Camera::Instance()->SetH(h);
 }
 
-void GameManager::SetUpScene()
+void GameManager::SetUpScene(std::string path)
 {
     printf("Creating Scene \n");
     
-    gScene = new Scene("tileMap.json");
+    gScene = new Scene(path);
     
     if (gScene == NULL)
     {
@@ -108,31 +108,37 @@ void GameManager::SetUpTextureManager()
 
 /* Game Manager Logic */
 
+#include "Particle.h"
+#include "ParticleEmitter.h"
+ParticleEmitter* p;
+
 void GameManager::Tick()
 {
+    TextureManager::Instance()->LoadTexture("t1.png", "spSheet");
+    
+    Tile t;
+    t.id = "spSheet";
+    t.c = 0;
+    t.r = 0;
+    t.w = 16;
+    t.h = 16;
+    p = new ParticleEmitter(t, Vector2(400,225), 500, 30, -128);
+    p->setN(10);
+    p->setTime(500);
+    
+    p->setGravity(Vector2(0,2));
+    
     while (running)
     {
         time.t = SDL_GetTicks();
         time.d = time.t - time.l;
-        /*if (time.d < FPS_MS)
-        {
-            SDL_Delay(FPS_MS - time.d);
-            
-            time.t = SDL_GetTicks();
-            time.d = time.t - time.l;
-        }*/
         time.l = time.t;
         
-        printf("%d\n", time.d);
-        
         Update();
-        Render();
         
-        /*fTime = SDL_GetTicks() - cTime;
-        if (fTime < D_TIME)
-        {
-            SDL_Delay(D_TIME - fTime);
-        }*/
+        p->Update(time.d);
+        
+        Render();
     }
 }
 
@@ -140,10 +146,8 @@ void GameManager::Update()
 {
     EventHandler::Instance()->GetEvents(running);
     
-    //printf("%d\n", EventHandler::Instance()->isKeyDown(SDL_SCANCODE_W));
-    
     /* Main Logic */
-    gScene->Update();
+    gScene->Update(time.d);
 }
 
 void GameManager::Render()
@@ -153,6 +157,8 @@ void GameManager::Render()
     SDL_RenderClear(rend);
     
     gScene->Render();
+    
+    p->Render();
     
     SDL_RenderPresent(rend);
 }

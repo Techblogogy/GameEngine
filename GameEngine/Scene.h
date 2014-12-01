@@ -25,13 +25,11 @@ public:
     void Add(GameObject* obj); //Add Object to scene
     
     void Render(); //Render All Objects to scenes
-    void Update(); //Update All Objects on scene
+    void Update(float dt); //Update All Objects on scene
     
     void CleanUp();
     
     std::vector<GameObject*> objects; //Scene Objects
-//private:
-    
 };
 
 #endif /* defined(__GameEngine__Scene__) */

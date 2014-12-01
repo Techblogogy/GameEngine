@@ -27,12 +27,9 @@ public:
     
     virtual void Init(); //GameObject Initiation
     virtual void Render(); //GameObject Render
-    virtual void Update(); //GameObject Update
-    
-    void CleanUp();
+    virtual void Update(float dt); //GameObject Update
+    virtual void CleanUp(); //
 private:
-    //std::string textureId; //Texture id
-    
     Tile texture;
     Animation animS;
 };

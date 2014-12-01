@@ -15,8 +15,8 @@ GameObject::GameObject(std::string tId, int w, int h)
     
     texture.id = tId; //Set Texture Tile Id
     
-    texture.r = 0;
-    texture.c = 0;
+    texture.r = 0; //
+    texture.c = 0; //
     
     texture.w = w; //Set Texture Tile Width in pixels
     texture.h = h; //Set Texture Tile Height in pixels
@@ -39,56 +39,55 @@ void GameObject::Init()
     
 }
 
-int velX = 0;
-int velY = 0;
+float dir = 35;
+Vector2 vel = Vector2(0,0);
 
-void GameObject::Update()
+void GameObject::Update(float dt)
 {
-    position.x = 100 * sin(SDL_GetTicks() * 1 * M_PI /500) + 100;
-    position.y = 100 * cos(SDL_GetTicks() * 1 * M_PI /500) + 100;
-    
-    //x += 2 * (SDL_GetTicks()/1000;
-    
-    Camera::Instance()->SetX(100*sin(SDL_GetTicks() * 1 * M_PI /1000)-100);
-    
-    //float deg = 24;
-    
-    //velX = sinf(deg*M_PI/180) * 128.0f;
-    //velY = cosf(deg*M_PI/180) * 128.0f;
-    
-    //printf("%f\n", velX);
-    //velY = 230.f;
-    
-    //position.x += velX * (GameManager::Instance()->time.d/1000.0f);
-    //position.y += velY * (GameManager::Instance()->time.d/1000.0f);
-
-    //position.x += velX;
-    //position.y += velY;
-    
     /*if (EventHandler::Instance()->isKeyDown(SDL_SCANCODE_W))
     {
-        //if (GameManager::Instance()->gScene->tileMap->isColT(1, position, texture, vel))
-            position.y -= vel * GameManager::Instance()->time.d;
+        if (GameManager::Instance()->gScene->tileMap->isColT(1, position, texture, vel))
+            
     }
     
     if (EventHandler::Instance()->isKeyDown(SDL_SCANCODE_S))
     {
-        //if (GameManager::Instance()->gScene->tileMap->isColB(1, position, texture, vel))
-            position.y += vel * GameManager::Instance()->time.d;
+        if (GameManager::Instance()->gScene->tileMap->isColB(1, position, texture, vel))
+            position.y += velY * (dt/1000.0f);
     }
     
     if (EventHandler::Instance()->isKeyDown(SDL_SCANCODE_A))
     {
-        //if (GameManager::Instance()->gScene->tileMap->isColL(1, position, texture, vel))
-            position.x -= vel * GameManager::Instance()->time.d;
+        if (GameManager::Instance()->gScene->tileMap->isColL(1, position, texture, vel))
+            position.x -= velX * (dt/1000.0f);
     }
     
     if (EventHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
     {
-        //if (GameManager::Instance()->gScene->tileMap->isColR(1, position, texture, vel))
-            position.x += vel * GameManager::Instance()->time.d;
+        if (GameManager::Instance()->gScene->tileMap->isColR(1, position, texture, vel))
+            position.x += velX * (dt/1000.0f);
     }*/
-
+    
+    vel.x = 150 * cosf(dir*M_PI/180);
+    vel.y = 150 * sinf(dir*M_PI/180);
+    
+    Vector2 fP = Vector2(position.x + vel.x * (dt/1000.0f),
+                         position.y);
+    
+    if (GameManager::Instance()->gScene->tileMap->isEmpty(1, fP, texture, fP))
+    {
+        position.x += vel.x * (dt/1000.0f);
+        //position.y += vel.y * (dt/1000.0f);
+    }
+    
+    fP = Vector2(position.x,
+                 position.y + vel.y * (dt/1000.0f));
+    
+    if (GameManager::Instance()->gScene->tileMap->isEmpty(1, fP, texture, fP))
+    {
+        //position.x += vel.x * (dt/1000.0f);
+        position.y += vel.y * (dt/1000.0f);
+    }
 }
 
 void GameObject::Render()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F513E9391A279AC900499F59 /* t1.png in Resources */ = {isa = PBXBuildFile; fileRef = F513E9381A279AC900499F59 /* t1.png */; };
 		F51637721A271F9B00BE0515 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F51637701A271F9B00BE0515 /* Particle.cpp */; };
 		F547F3871A221EBC00DDFD18 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547F3861A221EBC00DDFD18 /* Cocoa.framework */; };
 		F547F3891A221ECA00DDFD18 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F547F3881A221ECA00DDFD18 /* CoreFoundation.framework */; };
@@ -28,10 +29,12 @@
 		F56306551A22759A0051FAA2 /* Plan.txt in Resources */ = {isa = PBXBuildFile; fileRef = F56306541A22759A0051FAA2 /* Plan.txt */; };
 		F57A9BCE1A25C1130015F8A4 /* EventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F57A9BCC1A25C1130015F8A4 /* EventHandler.cpp */; };
 		F5C08D3F1A2622E4008EC115 /* t.png in Resources */ = {isa = PBXBuildFile; fileRef = F5C08D3E1A2622E4008EC115 /* t.png */; };
+		F5CE661F1A276B2400DCE979 /* ParticleEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5CE661D1A276B2400DCE979 /* ParticleEmitter.cpp */; };
 		F5EFA20F1A250D3900307D37 /* sp.png in Resources */ = {isa = PBXBuildFile; fileRef = F5EFA20E1A250D3900307D37 /* sp.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F513E9381A279AC900499F59 /* t1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t1.png; sourceTree = "<group>"; };
 		F51637701A271F9B00BE0515 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		F51637711A271F9B00BE0515 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		F547F3631A221E7000DDFD18 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +69,8 @@
 		F57A9BCD1A25C1130015F8A4 /* EventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		F5C08D3D1A260B26008EC115 /* Tile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		F5C08D3E1A2622E4008EC115 /* t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t.png; sourceTree = "<group>"; };
+		F5CE661D1A276B2400DCE979 /* ParticleEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleEmitter.cpp; sourceTree = "<group>"; };
+		F5CE661E1A276B2400DCE979 /* ParticleEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleEmitter.h; sourceTree = "<group>"; };
 		F5EFA20E1A250D3900307D37 /* sp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +170,7 @@
 				F547F3AF1A22219000DDFD18 /* TileMap.h */,
 				F547F3B61A2221A700DDFD18 /* Vector2.h */,
 				F51637711A271F9B00BE0515 /* Particle.h */,
+				F5CE661E1A276B2400DCE979 /* ParticleEmitter.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 				F547F3AE1A22219000DDFD18 /* TileMap.cpp */,
 				F547F3B51A2221A700DDFD18 /* Vector2.cpp */,
 				F51637701A271F9B00BE0515 /* Particle.cpp */,
+				F5CE661D1A276B2400DCE979 /* ParticleEmitter.cpp */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 		F547F3961A2220FC00DDFD18 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F513E9381A279AC900499F59 /* t1.png */,
 				F5C08D3E1A2622E4008EC115 /* t.png */,
 				F5EFA20E1A250D3900307D37 /* sp.png */,
 				F547F3991A22211D00DDFD18 /* coolArt.bmp */,
@@ -284,6 +292,7 @@
 				F547F3B41A22219D00DDFD18 /* tileSet.png in Resources */,
 				F5C08D3F1A2622E4008EC115 /* t.png in Resources */,
 				F5EFA20F1A250D3900307D37 /* sp.png in Resources */,
+				F513E9391A279AC900499F59 /* t1.png in Resources */,
 				F547F39A1A22211D00DDFD18 /* coolArt.bmp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +314,7 @@
 				F547F3A71A22215500DDFD18 /* main.cpp in Sources */,
 				F547F3A01A22213E00DDFD18 /* GameObject.cpp in Sources */,
 				F547F3B71A2221A700DDFD18 /* Vector2.cpp in Sources */,
+				F5CE661F1A276B2400DCE979 /* ParticleEmitter.cpp in Sources */,
 				F547F3AD1A22217100DDFD18 /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

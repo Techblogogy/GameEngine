@@ -26,11 +26,11 @@ void Scene::Add(GameObject* obj)
     obj->Init();
 }
 
-void Scene::Update()
+void Scene::Update(float dt)
 {
     for (std::vector<GameObject>::size_type i=0; i<objects.size(); i++)
     {
-        objects[i]->Update();
+        objects[i]->Update(dt);
     }
 }
 

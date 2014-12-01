@@ -9,8 +9,9 @@
 #ifndef __GameEngine__TileMap__
 #define __GameEngine__TileMap__
 
-#include <SDL2/SDL.h>
 #include <CoreFoundation/CFBundle.h>
+
+#include <SDL2/SDL.h>
 
 #include <string>
 #include <fstream>
@@ -37,7 +38,7 @@ public:
     void RenderStatic(); //Render Static Layers
     void RenderDynamic(); //Render Dynamic Layers
     
-    bool isEmpty(int layerId, Vector2 &pos, Tile &t, float &v);
+    bool isEmpty(int layerId, Vector2 &p, Tile &t, Vector2 &v);
     
     bool isColL(int layerId, Vector2 &pos, Tile &t, float &v);
     bool isColR(int layerId, Vector2 &pos, Tile &t, float &v);

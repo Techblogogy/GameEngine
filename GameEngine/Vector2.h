@@ -17,12 +17,6 @@ public:
     Vector2(float xP, float yP); //2D Vector Constructor
     //~Vector2(); //2D Vector Deconstructor
     
-    /*float getX(); //Get Current X Of Vector
-    float getY(); //Get Current Y Of Vector
-    
-    void setX(float xP); //Set X Of 2D Vector
-    void setY(float yP); //Set Y of 2D Vector*/
-    
     float x,y;
     
     float getLength(); //Calculate length of vector

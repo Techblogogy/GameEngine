@@ -14,11 +14,9 @@ void InitGame()
     
     //GameManager* gm = new GameManager();
     
-    GameManager::Instance()->Init("Game", 800, 450);
+    GameManager::Instance()->Init("Game", 800, 450, "tileMap.json");
     
-    TextureManager::Instance()->LoadTexture("t.png", "spSheet");
-    
-    GameObject* go = new GameObject("spSheet",32,32);
+    GameObject* go = new GameObject("spSheet",16,16);
     
     GameManager::Instance()->gScene->Add(go);
     go->position.x = 0;

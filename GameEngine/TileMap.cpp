@@ -9,6 +9,7 @@
 #include "GameManager.h"
 #include "TileMap.h"
 
+
 TileMap::TileMap(std::string tP)
 {
     tiledPath = tP;
@@ -21,7 +22,7 @@ TileMap::~TileMap()
 
 Json::Value ReadJSONFile(std::string path)
 {
-#ifdef __APPLE__&&__MACH__
+#ifdef __APPLE__
     
     /* MAC ONLY */
     /* Get Current Mac Application Directory */
@@ -45,9 +46,7 @@ Json::Value ReadJSONFile(std::string path)
     
     return jVal;
     
-#endif
-    
-#ifdef _WIN32
+#else
     /* Windows Only */
     
     /* Read Tile Map File */
@@ -141,13 +140,35 @@ void TileMap::RenderDynamic()
     
 }
 
-/*bool TileMap::isEmpty(int layerId, Vector2 &pos, Tile &t, float &v)
+bool TileMap::isEmpty(int layerId, Vector2 &p, Tile &t, Vector2 &v)
 {
     //printf("%d\n", (int)pos.y*height+(int)pos.x);
     
-    if (mapLayers[layerId][y*height+x] == 0) return true;
-    else return false;
-}*/
+    /*if (mapLayers[layerId][y*height+x] == 0) return true;
+    else return false;**/
+    
+    //Vector2 p1 = Vector2(0,0);
+    //Vector2 p2 = Vector2(0,0);
+    
+    Vector2 p1 = Vector2( (int)(p.x)/(tilewidth), (int)(p.y)/(tileheight) ); //Top Left
+    Vector2 p2 = Vector2( (int)(p.x+t.w)/(tilewidth), (int)(p.y)/(tileheight) ); //Top Right
+    
+    Vector2 p3 = Vector2( (int)(p.x)/(tilewidth), (int)(p.y+t.h)/(tileheight) ); //Bottom Left
+    Vector2 p4 = Vector2( (int)(p.x+t.w)/(tilewidth), (int)(p.y+t.h)/(tileheight) ); //Bottom Right
+    
+    if ((mapLayers[layerId][(int)(p3.y*height+p3.x)] == 0 &&
+         mapLayers[layerId][(int)(p4.y*height+p4.x)] == 0) ||
+        
+        (mapLayers[layerId][(int)(p2.y*height+p2.x)] == 0 &&
+         mapLayers[layerId][(int)(p4.y*height+p4.x)] == 0))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 bool TileMap::isColT(int layerId, Vector2 &pos, Tile &t, float &v)
 {

@@ -39,7 +39,7 @@ public:
     
     Time time;
     
-    void Init(std::string wName, int w, int h); //Init Game Manager
+    void Init(std::string wName, int w, int h, std::string path); //Init Game Manager
     
     void Tick(); //Main Game Loop
     void Clean(); //CleanUp Game Variables
@@ -55,7 +55,7 @@ private:
     
     void SetUpCamera(int w, int h); //Setup Camera
     void SetUpTextureManager(); //Setup TextureManager
-    void SetUpScene(); //Setup Scene
+    void SetUpScene(std::string path); //Setup Scene
     
     void Update(); //Handle Game Physics
     void Render(); //Render Game

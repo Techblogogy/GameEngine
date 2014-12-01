@@ -21,17 +21,19 @@ TextureManager* TextureManager::Instance()
 
 TextureManager::TextureManager()
 {
-    //rend = g_r;
+    
 }
 
 void TextureManager::LoadTexture(std::string path, std::string name)
 {
     printf("Loading Image. Id: %s, Path: %s \n", name.c_str(), path.c_str());
     
+    if (textureMap[name] != NULL) printf("Image with");
+    
     SDL_Texture* tex;
     
     tempSurface = IMG_Load(path.c_str());
-    tex = SDL_CreateTextureFromSurface(GameManager::Instance()->rend , tempSurface);
+    tex = SDL_CreateTextureFromSurface(GameManager::Instance()->rend, tempSurface);
     
     if (tex == NULL) printf("Image Loading Failed.");
     
@@ -82,8 +84,8 @@ void TextureManager::Render(Tile t, Vector2 position)
     bounds.x = t.c * t.w;
     bounds.y = t.r * t.h;
     
-    destR.x = (int)position.x - Camera::Instance()->GetX();
-    destR.y = (int)position.y - Camera::Instance()->GetY();
+    destR.x = (int)roundf(position.x) - Camera::Instance()->GetX();
+    destR.y = (int)roundf(position.y) - Camera::Instance()->GetY();
     
     destR.w = bounds.w = t.w;
     destR.h = bounds.h = t.h;
@@ -102,8 +104,8 @@ void TextureManager::Render(Tile& t, Vector2& position, Animation& a)
     bounds.x = t.c * t.w;
     bounds.y = t.r * t.h;
     
-    destR.x = roundf(position.x) - Camera::Instance()->GetX();
-    destR.y = roundf(position.y) - Camera::Instance()->GetY();
+    destR.x = position.x - Camera::Instance()->GetX();
+    destR.y = position.y - Camera::Instance()->GetY();
     
     destR.w = bounds.w = t.w;
     destR.h = bounds.h = t.h;
